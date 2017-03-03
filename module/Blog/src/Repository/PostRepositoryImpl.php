@@ -12,7 +12,18 @@ class PostRepositoryImpl implements PostRepository
 
   public function save(Post $post)
   {
-
+      $sql = new \Zend\Db\Sql\Sql($this->adapter);
+      $insert = $sql->insert()
+        ->values([
+          'title' => $post->getTitle(),
+          'slug'  => $post->getSlug(),
+          'content' => $post->getContent(),
+          'category_id' => $post->getCategory()->getId(),
+          'created' => time()
+        ])
+        ->into('post');
+     $statement = $sql->prepareStatementForSqlObject($insert);
+     $statement->execute();
   }
 
   public function fetchAll()
