@@ -4,6 +4,7 @@ namespace Blog\Repository;
 
 use Blog\Repository\PostRepository;
 use Zend\Db\Adapter\AdapterAwareTrait;
+use Blog\Entity\Post;
 
 class PostRepositoryImpl implements PostRepository
 {

@@ -2,7 +2,7 @@
 
 namespace Blog\Repository;
 
-use Application\Repository\RepositoryInterface
+use Application\Repository\RepositoryInterface;
 use Blog\Entity\Post;
 
 interface PostRepository extends RepositoryInterface
