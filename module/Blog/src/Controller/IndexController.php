@@ -12,7 +12,7 @@ class IndexController extends AbstractActionController
 {
   protected $container;
 
-  public function __constructor($container)
+  public function __construct($container)
   {
     $this->container = $container;
   }
@@ -31,10 +31,22 @@ class IndexController extends AbstractActionController
   public function addAction()
   {
     $form = new Add();
-    
+
     $variables = [
       'form' => $form
     ];
+
+    if ($this->request->isPost()) { // if form is submitted
+        $form->setInputFilter(new AddPost());
+
+        $data = $this->request->getPost(); // key value array
+        $form->setData($data);
+
+        if ($form->isValid()) {
+          // @todo insert into db
+          return $this->redirect()->toRoute('blog_home');
+        }
+    }
 
     return new ViewModel($variables);
   }
