@@ -48,7 +48,7 @@ class IndexController extends AbstractActionController
 
         if ($form->isValid()) {
           $this->blogService->save($blogPost);
-          
+
           return $this->redirect()->toRoute('blog_home');
         }
     }
