@@ -110,7 +110,7 @@ class PostRepositoryImpl implements PostRepository
           );
           $paginator = new \Zend\Paginator\Paginator($paginatorAdapter);
           $paginator->setCurrentPageNumber($page);
-          $paginator->setItemCountPerPage(5);
+          $paginator->setItemCountPerPage(3);
 
           return $paginator;
   }

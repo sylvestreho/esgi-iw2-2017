@@ -23,6 +23,7 @@ return [
     'Zend\Log',
     'Zend\Form',
     'Zend\Db',
+    'Zend\I18n',
     'Zend\Cache',
     'ZendDeveloperTools',
     'Zend\Router',
