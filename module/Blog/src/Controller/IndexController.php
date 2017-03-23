@@ -20,13 +20,11 @@ class IndexController extends AbstractActionController
 
   public function indexAction()
   {
-    $variables = [
-
-    ];
-
-    // @todo fetch blog posts
-
-    return new ViewModel($variables);
+      $variables = [
+        'posts' => $this->blogService->fetchAll()
+      ];
+      
+      return new ViewModel($variables);
   }
 
   public function addAction()

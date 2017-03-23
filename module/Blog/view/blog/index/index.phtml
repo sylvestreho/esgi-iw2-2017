@@ -1,2 +1,10 @@
 <h3>My Blog</h3>
 <a class="btn btn-primary" href="<?php echo $this->url("blog_add"); ?>">Add a new post</a>
+
+<ul>
+  <?php foreach($this->posts as $post): ?>
+    <li>
+      <?php echo $post->getTitle() ?>
+    </li>
+  <?php endforeach; ?>
+</ul>
