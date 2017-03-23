@@ -13,6 +13,20 @@ return [
           'defaults' => [
             'controller'  => 'Blog\Controller\Index',
             'action'      => 'index'
+          ],
+          'may_terminate' => true,
+          'child_routes' => [
+              'paged' => [
+                  'type' => 'Segment',
+                  'options' => [
+                      'route' => '/page/:page' ,   // /blog/page/:page
+                      'constraints' => [ 'page' => '[0-9]+' ],
+                      'defaults' => [
+                          'controller' => 'Blog\Controller\Index',
+                          'action' => 'index'
+                      ]
+                  ]
+              ]
           ]
         ]
       ],
