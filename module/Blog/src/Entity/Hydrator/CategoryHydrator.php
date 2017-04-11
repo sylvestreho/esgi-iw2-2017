@@ -14,10 +14,12 @@ class CategoryHydrator implements HydratorInterface
         return [];
       }
 
+      $category = $object->getCategory();
+
       return [
-        'id'        => $object->getId(),
-        'name'      => $object->getName(),
-        'slug'      => $object->getSlug()
+        'id'        => $category->getId(),
+        'name'      => $category->getName(),
+        'slug'      => $category->getSlug()
       ];
   }
 

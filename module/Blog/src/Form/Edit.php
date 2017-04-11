@@ -6,7 +6,7 @@ use Blog\Entity\Hydrator\CategoryHydrator;
 use Blog\Entity\Hydrator\PostHydrator;
 use Zend\Form\Form;
 use Zend\Form\Element;
-use Zend\Hydrator\AggregateHydrator;
+use Zend\Hydrator\Aggregate\AggregateHydrator;
 
 class Edit extends Form
 {

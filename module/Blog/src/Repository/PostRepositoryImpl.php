@@ -156,7 +156,35 @@ class PostRepositoryImpl implements PostRepository
    */
   public function findById($postId)
   {
+    $sql = new \Zend\Db\Sql\Sql($this->adapter);
+    $select = $sql->select();
+    $select->columns([
+      'id',
+      'title',
+      'slug',
+      'content',
+      'created'
+    ])->from(
+      ['p' => 'post']
+    )->join(
+      ['c' => 'category'], // TABLE NAME
+      'c.id = p.category_id', // JOIN CONDITION
+      ['category_id' => 'id', 'name', 'category_slug' => 'slug']
+    )->where(
+      [ 'p.id' => $postId ]
+    );
 
+    $statement = $sql->prepareStatementForSqlObject($select);
+    $results = $statement->execute();
+
+    $hydrator = new AggregateHydrator();
+    $hydrator->add(new PostHydrator());
+    $hydrator->add(new CategoryHydrator());
+
+    $resultSet = new HydratingResultSet($hydrator, new Post());
+    $resultSet->initialize($results);
+
+    return ($resultSet->count() ? $resultSet->current() : null);
   }
 
   public function update(Post $post)

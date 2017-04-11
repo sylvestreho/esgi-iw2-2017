@@ -49,7 +49,7 @@ return [
           ],
           'defaults' => [
             'controller'  => 'Blog\Controller\Index',
-            'action'      =>  'edit'
+            'action'      => 'edit'
           ]
         ]
       ],
@@ -62,7 +62,9 @@ return [
           ],
           'defaults' => [
             'controller'  => 'Blog\Controller\Index',
-            'action'      =>  'delete'
+            'action'      => 'delete'
+          ]
+        ]
       ],
       'display_post' => [
         'type' => 'Segment',

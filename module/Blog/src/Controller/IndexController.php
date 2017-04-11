@@ -82,5 +82,32 @@ class IndexController extends AbstractActionController
   public function editAction()
   {
     $form = new Edit();
+    $variables = ['form' => $form];
+
+    if ($this->request->isPost()) { // FORM HAS BEEN SUBMITTED
+      $blogPost = new Post();
+      $form->bind($blogPost);
+      $form->setInputFilter(new AddPost());
+      $data = $this->request->getPost();
+      $form->setData($data); // KEY VALUE ARRAY
+      if ($form->isValid()) {
+        $this->blogService->update($blogPost);
+        return $this->redirect()->toRoute('blog_home');
+      }
+    } else {  // VIEWING POST
+        $post = $this->blogService
+          ->findById(
+            $this->params()->fromRoute('postId')
+        );
+        if (is_null($post)) {
+          $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+        } else {
+          $form->bind($post);
+          $form->get('slug')->setValue($post->getSlug());
+          $form->get('id')->setValue($post->getId());
+          $form->get('category_id')->setValue($post->getCategory()->getId());
+        }
+      }
+    return new ViewModel($variables);
   }
 }
