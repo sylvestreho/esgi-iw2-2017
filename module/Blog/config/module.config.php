@@ -40,6 +40,30 @@ return [
           ]
         ]
       ],
+      'edit_post' => [
+        'type' => 'Segment',
+        'options' => [
+          'route' => '/blog/post/edit/:postId',
+          'constraints' => [
+            'postId' => '[0-9]+'
+          ],
+          'defaults' => [
+            'controller'  => 'Blog\Controller\Index',
+            'action'      =>  'edit'
+          ]
+        ]
+      ],
+      'delete_post' => [
+        'type' => 'Segment',
+        'options' => [
+          'route' => '/blog/post/delete/:postId',
+          'constraints' => [
+            'postId' => '[0-9]+'
+          ],
+          'defaults' => [
+            'controller'  => 'Blog\Controller\Index',
+            'action'      =>  'delete'
+      ],
       'display_post' => [
         'type' => 'Segment',
         'options' => [

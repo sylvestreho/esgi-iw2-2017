@@ -161,11 +161,31 @@ class PostRepositoryImpl implements PostRepository
 
   public function update(Post $post)
   {
+    $sql = new \Zend\Db\Sql\Sql($this->adapter);
+    $update = $sql->update('post')
+      ->set([
+        'title'       => $post->getTitle(),
+        'slug'        => $post->getSlug(),
+        'content'     => $post->getContent(),
+        'category_id' => $post->getCategory()->getId()
+      ])->where([
+        'id' => $post->getId()
+      ]);
 
+      $statement = $sql->prepareStatementForSqlObject($update);
+      $statement->execute();
   }
 
   public function delete($postId)
   {
+      $sql = new \Zend\Db\Sql\Sql($this->adapter);
+      $delete = $sql->delete()
+        ->from('post')
+        ->where([
+          'id' => $postId
+        ]);
 
+        $statement = $sql->prepareStatementForSqlObject($delete);
+        $statement->execute();
   }
 }

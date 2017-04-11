@@ -6,6 +6,7 @@ use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Blog\Form\Add;
+use Blog\Form\Edit;
 use Blog\InputFilter\AddPost;
 use Blog\Entity\Post;
 
@@ -70,5 +71,16 @@ class IndexController extends AbstractActionController
     }
 
     return new ViewModel(['post' => $post]);
+  }
+
+  public function deleteAction()
+  {
+    $this->blogService->delete($this->params()->fromRoute('postId'));
+    $this->redirect()->toRoute('blog_home');
+  }
+
+  public function editAction()
+  {
+    $form = new Edit();
   }
 }
