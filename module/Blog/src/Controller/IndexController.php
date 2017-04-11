@@ -57,4 +57,18 @@ class IndexController extends AbstractActionController
 
     return new ViewModel($variables);
   }
+
+  public viewPostAction()
+  {
+    $post = $this->blogService->find(
+      $this->params()->fromRoute('categorySlug'),
+      $this->params()->fromRoute('postSlug')
+    );
+
+    if (is_null($post)) {
+      $this->getResponse()->setStatusCode(Response::STATUS_CODE_404);
+    }
+
+    return new ViewModel(['post' => $post]);
+  }
 }
