@@ -2,7 +2,9 @@
 
 namespace User\Service;
 
-class UserService
+use User\Entity\User;
+
+interface UserService
 {
   public function add(User $user);
 

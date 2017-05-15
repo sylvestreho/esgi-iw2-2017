@@ -29,6 +29,7 @@ class UserRepositoryImpl implements UserRepository
 
   public function generatePassword($clearPassword)
   {
+    // composer require zendframework/zend-crypt
     $encrypter = new Bcrypt();
     $encrypter->setCost(12);
 

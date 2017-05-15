@@ -29,7 +29,8 @@
         "zendframework/zend-servicemanager-di": "^1.0",
         "zendframework/zend-form": "^2.10",
         "zendframework/zend-paginator": "^2.7",
-        "zendframework/zend-i18n": "^2.7"
+        "zendframework/zend-i18n": "^2.7",
+        "zendframework/zend-crypt": "^3.2"
     },
     "autoload": {
         "psr-4": {
