@@ -40,7 +40,7 @@ class Add extends Form
     $this->add($firstname);
     $this->add($lastname);
     $this->add($email);
-    $this->add($pasword);
+    $this->add($password);
     $this->add($repeatPassword);
     $this->add($submit);
 

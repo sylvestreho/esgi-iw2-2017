@@ -11,7 +11,7 @@ class IndexController extends AbstractActionController
 {
   protected $addUserFilter;
 
-  public function __construct(\User\InputFilter\AddUser $addUserFilter)
+  public function __construct( $addUserFilter)
   {
     $this->addUserFilter = $addUserFilter;
   }

@@ -102,11 +102,11 @@ class AddUser extends InputFilter
     $stringLength = new StringLength();
     $stringLength->setMin(7);
 
-    $emailDoesNotExist = new NoRecordExists(
+    $emailDoesNotExist = new NoRecordExists([
       'table' => 'user',
       'field' => 'email',
       'adapter' => $this->dbAdapter
-    );
+    ]);
     $emailDoesNotExist->setMessage('This email address is already in use');
 
     $validatorChain = new ValidatorChain();

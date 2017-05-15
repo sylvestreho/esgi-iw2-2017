@@ -8,7 +8,7 @@ return [
       'add_user' => [
         'type' => 'Literal',
         'options' => [
-          'route' => '/user/add'
+          'route' => '/user/add',
           'defaults' => [
             'controller' => 'User\Controller\Index',
             'action'  => 'add'
@@ -23,6 +23,8 @@ return [
     ]
   ],
   'view_manager' => [
-
+    'template_path_stack' => [
+      __DIR__ . '/../view'
+    ]
   ]
 ];
