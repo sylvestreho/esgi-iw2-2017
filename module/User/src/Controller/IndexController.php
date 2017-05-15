@@ -9,9 +9,11 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
-  public function __construct()
-  {
+  protected $addUserFilter;
 
+  public function __construct(\User\InputFilter\AddUser $addUserFilter)
+  {
+    $this->addUserFilter = $addUserFilter;
   }
 
   public function addAction()
@@ -25,7 +27,12 @@ class IndexController extends AbstractActionController
     if ($this->request->isPost()) {
       $user = new User();
       $form->bind($user);
+      $form->setInputFilter($this->addUserFilter);
       $form->setData($this->request->getPost());
+
+      if ($form->isValid()) {
+        // @todo save user in database
+      }
     }
 
     return new ViewModel($variables);
