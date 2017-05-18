@@ -46,6 +46,12 @@ class AddUser extends InputFilter
     $repeatPassword = new Input('repeatPassword');
     $repeatPassword->setRequired(true);
     $repeatPassword->setValidatorChain($this->getRepeatPasswordValidatorChain());
+
+    $this->add($firstname);
+    $this->add($lastname);
+    $this->add($email);
+    $this->add($password);
+    $this->add($repeatPassword);
   }
 
   protected function getFirstnameValidatorChain()

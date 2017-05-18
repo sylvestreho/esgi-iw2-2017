@@ -3,7 +3,7 @@
 namespace User\Repository;
 
 use User\Entity\User;
-use Zend\Crypt\Password\BCRYPT;
+use Zend\Crypt\Password\Bcrypt;
 use Zend\Db\Adapter\AdapterAwareTrait;
 use Zend\Authentication\Adapter\DbTable\CallbackCheckAdapter;
 
