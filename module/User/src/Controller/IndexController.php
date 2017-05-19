@@ -49,7 +49,24 @@ class IndexController extends AbstractActionController
 
     $form = new Login();
     if ($this->request->isPost()) {
-      // @todo do login
+      $form->setData($this->request->getPost());
+      // @todo use login InputFilter
+      // $form->setInputFilter();
+
+      if ($form->isValid()) {
+        $data = $form->getData();
+        $loginResult = $this->userService
+          ->login(
+            $data['email'],
+            $data['password']
+          );
+
+        if ($loginResult === true) {
+          $this->flashMessenger()->addSuccessMessage('You are now logged in');
+        } else {
+          $this->flashMessenger()->addWarningMessage('Invalid credentials');
+        }
+      }
     }
 
     return new ViewModel([
@@ -59,6 +76,9 @@ class IndexController extends AbstractActionController
 
   public function logoutAction()
   {
+    $authenticationService = $this->userService->getAuthenticationService();
+    $authenticationService->clearIdentity();
 
+    return $this->redirect()->toRoute('login');
   }
 }
