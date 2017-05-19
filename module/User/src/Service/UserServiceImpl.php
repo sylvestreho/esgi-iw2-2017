@@ -31,7 +31,7 @@ class UserServiceImpl implements UserService
     return new AuthenticationService(null, $authenticationAdapter);
   }
 
-  public function login($email, $pasword)
+  public function login($email, $password)
   {
     $authenticationService = $this->getAuthenticationService();
 
@@ -49,7 +49,7 @@ class UserServiceImpl implements UserService
 
       return true;
     }
-    
+
     return false;
   }
 }
