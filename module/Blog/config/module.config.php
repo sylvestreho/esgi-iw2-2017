@@ -79,14 +79,24 @@ return [
             'action'      => 'viewPost'
           ]
         ]
-      ]
+      ],
+      'api_blog_posts' => [
+        'type'  => 'Segment',
+        'options' => [
+          'route' => '/api/blog/post[/:id]',
+          'defaults' => [
+            'controller'  => 'Blog\Controller\BlogPost'
+          ]
+        ]
+      ],
     ]
   ],
 
   // controllers
   'controllers' => [
     'factories' => [
-      'Blog\Controller\Index' => 'Blog\Controller\IndexControllerFactory'
+      'Blog\Controller\Index' => 'Blog\Controller\IndexControllerFactory',
+      'Blog\Controller\BlogPost' => 'Blog\Controller\BlogPostControllerFactory'
     ]
   ],
 
